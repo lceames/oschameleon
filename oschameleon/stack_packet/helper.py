@@ -18,6 +18,7 @@ def drop_packet(nfq_packet):
 def rules(server):
     #print server
     # allow incoming ssh
+    print server
     os.system('iptables -A INPUT -p tcp -s'+server+' --dport 63712 -m state --state NEW,ESTABLISHED -j ACCEPT')
     os.system('iptables -A OUTPUT -p tcp -d'+server+' --sport 63712 -m state --state ESTABLISHED -j ACCEPT')
 

@@ -43,6 +43,7 @@ import logging
 import nfqueue
 import os
 import socket
+import pdb
 
 from parse_fp import get_os_pattern
 from scapy.all import IP, TCP, UDP, ICMP  # @UnresolvedImport 

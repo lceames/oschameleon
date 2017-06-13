@@ -30,7 +30,7 @@ class Log(object):
         
     def py_logging(self, name):
         print ("log", name)
-        path = "/var/log/honeypot/" + name + ".log"
+        path = "/var/log/" + name + ".log"
         logger = logging.getLogger(name)
         formatter = logging.Formatter('%(asctime)s : %(message)s')
         fileHandler = logging.FileHandler(path, mode="a")

@@ -1,3 +1,5 @@
+
+
 #!/usr/bin/python
 
 '''
@@ -9,8 +11,8 @@ Created on 24.09.2016
 from IP_ import ReplyPacket
 from helper import drop_packet
 from helper import forward_packet
-from scapy.all import IP, UDP, ICMP, send  # @UnresolvedImport 
-
+from scapy.all import IP, UDP, ICMP, send, IPOption  # @UnresolvedImport 
+import pdb
 
 class ICMPPacket(ReplyPacket):
     """
@@ -48,11 +50,14 @@ class ICMPPacket(ReplyPacket):
 
     # echo reply
     def send_packet(self):
+	print "sending echo packet"
         send(self.ip / self.icmp / self.data, verbose=0)
 
     # port unreachable
     def send_PUR_packet(self):
-            send(self.ip / self.icmp / self.pkt, verbose=0)
+	print "sending pur packet"
+	pdb.set_trace()
+        send(self.ip / self.icmp, verbose=0)
 
 
 def send_ICMP_reply(pkt, ICMP_type, os_pattern, TCP_OPTIONS):
