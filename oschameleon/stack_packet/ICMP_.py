@@ -11,7 +11,7 @@ Created on 24.09.2016
 from IP_ import ReplyPacket
 from helper import drop_packet
 from helper import forward_packet
-from scapy.all import IP, UDP, ICMP, send, IPOption  # @UnresolvedImport 
+from scapy.all import IP, UDP, ICMP, send, IPOption  # @UnresolvedImport
 import pdb
 
 class ICMPPacket(ReplyPacket):
@@ -55,9 +55,8 @@ class ICMPPacket(ReplyPacket):
 
     # port unreachable
     def send_PUR_packet(self):
-	print "sending pur packet"
-	pdb.set_trace()
-        send(self.ip / self.icmp, verbose=0)
+    	print "sending pur packet"
+        send(self.ip / self.icmp / self.pkt, verbose=0)
 
 
 def send_ICMP_reply(pkt, ICMP_type, os_pattern, TCP_OPTIONS):
@@ -119,6 +118,6 @@ def check_ICMP_probes(pkt, nfq_packet, os_pattern):
 
         else:
             forward_packet(nfq_packet)
-            
+
     else:
         forward_packet(nfq_packet)
